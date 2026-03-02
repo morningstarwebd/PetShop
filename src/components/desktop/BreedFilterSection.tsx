@@ -133,7 +133,7 @@ export default function BreedFilterSection({ category, onPetClick, onBack }: Pro
                                     </div>
                                 )}
                             </div>
-                            <div className="p-4">
+                            <div className="p-5">
                                 <h3 className="font-heading font-bold text-charcoal">{pet.name}</h3>
                                 <p className="text-xs text-muted">{pet.breed} • {pet.age} • {pet.gender}</p>
                                 <div className="flex items-center justify-between mt-2">

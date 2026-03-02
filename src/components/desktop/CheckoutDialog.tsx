@@ -122,14 +122,14 @@ export default function CheckoutDialog({ isOpen, onClose }: Props) {
 
                 {/* Progress bar */}
                 {step !== 'confirmation' && (
-                    <div className="flex items-center gap-1 px-6 py-3 bg-gray-50">
+                    <div className="flex items-center gap-1 px-8 py-4 bg-gray-50">
                         {steps.slice(0, 3).map((s, i) => (
                             <div key={s} className="flex items-center flex-1">
                                 <div className={`flex items-center gap-1.5 text-xs font-semibold ${steps.indexOf(step) >= i ? 'text-primary' : 'text-gray-300'
                                     }`}>
                                     <span className={`w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-bold ${steps.indexOf(step) > i ? 'bg-primary text-white' :
-                                            steps.indexOf(step) === i ? 'bg-primary/10 text-primary border-2 border-primary' :
-                                                'bg-gray-100 text-gray-400'
+                                        steps.indexOf(step) === i ? 'bg-primary/10 text-primary border-2 border-primary' :
+                                            'bg-gray-100 text-gray-400'
                                         }`}>{i + 1}</span>
                                     <span className="hidden sm:inline">{stepLabels[s]}</span>
                                 </div>
@@ -142,13 +142,13 @@ export default function CheckoutDialog({ isOpen, onClose }: Props) {
                     </div>
                 )}
 
-                <div className="flex-1 overflow-y-auto p-6">
+                <div className="flex-1 overflow-y-auto p-8">
                     {/* ===== Step: Review ===== */}
                     {step === 'review' && (
                         <div className="space-y-5">
                             <h3 className="font-heading font-semibold text-sm text-muted uppercase tracking-wider">Items in Cart</h3>
                             {items.map(item => (
-                                <div key={item.pet.id} className="flex items-center gap-4 p-4 bg-cream rounded-2xl">
+                                <div key={item.pet.id} className="flex items-center gap-4 p-5 bg-cream rounded-2xl">
                                     <div className="w-14 h-14 rounded-xl bg-white flex items-center justify-center text-2xl shadow-sm">
                                         {item.pet.category === 'dogs' ? '🐕' : item.pet.category === 'cats' ? '🐱' : item.pet.category === 'birds' ? '🐦' : '🦎'}
                                     </div>
@@ -160,7 +160,7 @@ export default function CheckoutDialog({ isOpen, onClose }: Props) {
                                 </div>
                             ))}
 
-                            <div className="space-y-2 bg-cream rounded-2xl p-5 mt-4">
+                            <div className="space-y-2 bg-cream rounded-2xl p-6 mt-4">
                                 <div className="flex justify-between text-sm"><span className="text-muted">Subtotal</span><span>₹{subtotal.toLocaleString()}</span></div>
                                 <div className="flex justify-between text-sm"><span className="text-muted">Delivery</span><span>{deliveryCharge > 0 ? `₹${deliveryCharge}` : 'Free'}</span></div>
                                 <div className="flex justify-between text-base font-bold border-t border-gray-200 pt-3 mt-2">

@@ -89,7 +89,7 @@ export default function FeaturedPetsSection({ onPetClick }: Props) {
                             </div>
 
                             {/* Content */}
-                            <div className="p-5">
+                            <div className="p-6">
                                 <div className="flex items-start justify-between mb-2">
                                     <div>
                                         <h3 className="font-heading text-xl font-bold text-charcoal">{pet.name}</h3>

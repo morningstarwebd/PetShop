@@ -77,7 +77,7 @@ export default function ReviewsSection() {
                     {reviews.map((r, i) => (
                         <div
                             key={i}
-                            className="reveal bg-white rounded-2xl p-6 shadow-sm hover:shadow-md transition-all duration-300"
+                            className="reveal bg-white rounded-2xl p-7 shadow-sm hover:shadow-md transition-all duration-300"
                             style={{ animationDelay: `${i * 80}ms` }}
                         >
                             {/* Stars */}

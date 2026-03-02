@@ -51,7 +51,7 @@ export default function CartSheet() {
                     ) : (
                         <div className="space-y-4">
                             {items.map(item => (
-                                <div key={item.pet.id} className="flex gap-4 p-4 bg-cream rounded-2xl">
+                                <div key={item.pet.id} className="flex gap-4 p-5 bg-cream rounded-2xl">
                                     <div className="w-20 h-20 rounded-xl overflow-hidden flex-shrink-0 bg-gray-200">
                                         <div className="w-full h-full flex items-center justify-center text-3xl">
                                             {item.pet.category === 'dogs' ? '🐕' :

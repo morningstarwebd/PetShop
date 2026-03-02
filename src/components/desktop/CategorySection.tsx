@@ -65,7 +65,7 @@ export default function CategorySection({ onSelectCategory }: Props) {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
                             {/* Content */}
-                            <div className="relative z-10 h-full flex flex-col justify-end p-6">
+                            <div className="relative z-10 h-full flex flex-col justify-end p-7">
                                 <span className="text-4xl mb-3 transition-transform duration-300 group-hover:-translate-y-1">
                                     {cat.icon}
                                 </span>

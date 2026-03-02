@@ -97,7 +97,7 @@ export default function VisitBookingSection() {
                         ) : (
                             <form
                                 onSubmit={handleSubmit}
-                                className="bg-cream rounded-3xl p-8 space-y-5"
+                                className="bg-cream rounded-3xl p-10 space-y-5"
                             >
                                 <div>
                                     <label className="block text-sm font-semibold text-charcoal mb-2">Your Name</label>

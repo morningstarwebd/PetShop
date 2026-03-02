@@ -77,7 +77,7 @@ export default function PetDetailDialog({ pet, onClose }: Props) {
                 </div>
 
                 {/* Details — Right (Sticky Sidebar on Desktop) */}
-                <div className="lg:w-2/5 overflow-y-auto p-6 lg:p-10 flex flex-col">
+                <div className="lg:w-2/5 overflow-y-auto p-8 lg:p-10 flex flex-col">
                     {/* Header */}
                     <div className="mb-8">
                         <div className="flex items-center gap-2 mb-2">
@@ -129,7 +129,7 @@ export default function PetDetailDialog({ pet, onClose }: Props) {
                             {pet.deliveryOptions.map(opt => (
                                 <label
                                     key={opt}
-                                    className={`flex items-center gap-3 p-3 rounded-xl border-2 cursor-pointer transition-all ${selectedDelivery === opt
+                                    className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${selectedDelivery === opt
                                         ? 'border-primary bg-primary/5'
                                         : 'border-gray-200 hover:border-primary/30'
                                         }`}
@@ -153,7 +153,7 @@ export default function PetDetailDialog({ pet, onClose }: Props) {
                     </div>
 
                     {/* CTA Buttons — Sticky bottom */}
-                    <div className="mt-auto pt-6 border-t border-gray-100 space-y-3">
+                    <div className="mt-auto pt-8 border-t border-gray-100 space-y-3">
                         <button
                             onClick={() => { addToCart(pet); onClose(); }}
                             className="w-full btn-primary py-4 rounded-2xl text-base flex items-center justify-center gap-2"
@@ -167,10 +167,10 @@ export default function PetDetailDialog({ pet, onClose }: Props) {
                         </button>
 
                         <div className="grid grid-cols-2 gap-3">
-                            <button onClick={handleBookVisit} className="btn-outline py-3 rounded-2xl text-sm text-center">
+                            <button onClick={handleBookVisit} className="btn-outline py-3.5 px-4 rounded-2xl text-sm text-center">
                                 📅 Book Visit
                             </button>
-                            <a href="tel:+919876543210" className="btn-accent py-3 rounded-2xl text-sm text-center flex items-center justify-center gap-1">
+                            <a href="tel:+919876543210" className="btn-accent py-3.5 px-4 rounded-2xl text-sm text-center flex items-center justify-center gap-1">
                                 📞 Call Now
                             </a>
                         </div>
