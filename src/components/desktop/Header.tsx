@@ -25,8 +25,8 @@ export default function Header() {
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-                    ? 'bg-white/95 backdrop-blur-md shadow-md py-3'
-                    : 'bg-transparent py-5'
+                ? 'bg-white/95 backdrop-blur-md shadow-md py-3'
+                : 'bg-transparent py-5'
                 }`}
         >
             <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -62,17 +62,22 @@ export default function Header() {
                     <button
                         onClick={() => setIsCartOpen(true)}
                         className={`relative p-2.5 rounded-full transition-all duration-300 ${scrolled
-                                ? 'bg-primary/10 hover:bg-primary/20 text-primary'
-                                : 'bg-white/15 hover:bg-white/25 text-white'
+                            ? 'bg-primary/10 hover:bg-primary/20 text-primary'
+                            : 'bg-white/15 hover:bg-white/25 text-white'
                             }`}
                         aria-label="Open cart"
+                        style={{ width: '16.56px', height: '25.7px', left: '-22px', top: '-1px' }}
                     >
-                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                            style={{ width: '26.79px', height: '29.25px', transform: 'translate(-7.21px, 0px)', position: 'relative' }}
+                        >
                             <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" />
                             <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
                         </svg>
                         {totalItems > 0 && (
-                            <span className="absolute -top-1 -right-1 bg-accent text-charcoal text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center animate-scale-in">
+                            <span className="absolute bg-accent text-charcoal text-xs font-bold rounded-full flex items-center justify-center animate-scale-in"
+                                style={{ width: '26.09px', height: '22.25px', left: '11px', top: '-6px' }}
+                            >
                                 {totalItems}
                             </span>
                         )}
@@ -81,12 +86,15 @@ export default function Header() {
                     {/* Call CTA */}
                     <a
                         href="tel:+919876543210"
-                        className={`hidden md:flex items-center gap-2 px-5 py-2.5 rounded-full font-heading font-semibold text-sm transition-all duration-300 ${scrolled
-                                ? 'bg-primary text-white hover:bg-primary-dark hover:shadow-lg'
-                                : 'bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30'
+                        className={`hidden md:flex items-center gap-2.5 px-7 py-3 rounded-full font-heading font-semibold text-sm transition-all duration-300 ${scrolled
+                            ? 'bg-primary text-white hover:bg-primary-dark hover:shadow-lg'
+                            : 'bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30'
                             }`}
+                        style={{ transform: 'translate(-1.6px, -3.2px)' }}
                     >
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
+                            style={{ width: '24.73px', height: '15.08px' }}
+                        >
                             <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z" />
                         </svg>
                         Call Now

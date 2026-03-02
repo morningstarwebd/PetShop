@@ -32,23 +32,26 @@ export default function WhyChooseUs() {
                     <h2 className="section-title">
                         Why <span className="gradient-text">Happy Pets</span>?
                     </h2>
-                    <p className="section-subtitle mx-auto">
+                    <p className="section-subtitle mx-auto" style={{ lineHeight: 1.7 }}>
                         We go the extra mile to ensure every pet and pet parent is happy
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {features.map((f, i) => (
                         <div
                             key={i}
-                            className="reveal bg-white rounded-2xl p-6 hover:shadow-lg transition-all duration-300 group cursor-default"
+                            className="reveal bg-white rounded-2xl p-8 hover:shadow-lg transition-all duration-300 group cursor-default"
                             style={{ animationDelay: `${i * 80}ms` }}
                         >
-                            <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform duration-300">
+                            <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform duration-300"
+                                style={{ position: 'relative', left: '2px', top: '4px' }}>
                                 {f.icon}
                             </div>
-                            <h3 className="font-heading text-lg font-bold text-charcoal mb-2">{f.title}</h3>
-                            <p className="text-muted text-sm leading-relaxed">{f.desc}</p>
+                            <h3 className="font-heading text-lg font-bold text-charcoal mb-2"
+                                style={{ transform: 'translate(11.2px, 0px)', position: 'relative', left: '-6px', top: '1px' }}>{f.title}</h3>
+                            <p className="text-muted text-sm leading-relaxed"
+                                style={{ transform: 'translate(12px, 0px)', position: 'relative', left: '-7px', top: '-1px' }}>{f.desc}</p>
                         </div>
                     ))}
                 </div>

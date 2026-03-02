@@ -68,30 +68,33 @@ export default function ReviewsSection() {
                     <h2 className="section-title">
                         Happy Pet <span className="gradient-text">Parents</span>
                     </h2>
-                    <p className="section-subtitle mx-auto">
+                    <p className="section-subtitle mx-auto" style={{ position: 'relative', left: '1px', top: '-11px' }}>
                         Don&apos;t just take our word for it — hear from our family of pet parents
                     </p>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {reviews.map((r, i) => (
                         <div
                             key={i}
-                            className="reveal bg-white rounded-2xl p-7 shadow-sm hover:shadow-md transition-all duration-300"
+                            className="reveal bg-white rounded-2xl p-8 shadow-sm hover:shadow-md transition-all duration-300"
                             style={{ animationDelay: `${i * 80}ms` }}
                         >
                             {/* Stars */}
-                            <div className="flex gap-1 mb-4">
+                            <div className="flex gap-1 mb-4"
+                                style={{ transform: 'translate(6.45px, 0px)' }}>
                                 {Array.from({ length: 5 }, (_, j) => (
                                     <span key={j} className={j < r.rating ? 'text-amber-400' : 'text-gray-200'}>★</span>
                                 ))}
                             </div>
 
                             {/* Text */}
-                            <p className="text-charcoal text-sm leading-relaxed mb-5">&ldquo;{r.text}&rdquo;</p>
+                            <p className="text-charcoal text-sm leading-relaxed mb-5"
+                                style={{ transform: 'translate(6.98px, 0px)' }}>&ldquo;{r.text}&rdquo;</p>
 
                             {/* Author */}
-                            <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
+                            <div className="flex items-center gap-3 pt-4 border-t border-gray-100"
+                                style={{ transform: 'translate(6.3px, 0px)' }}>
                                 <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-lg">
                                     {r.avatar}
                                 </div>

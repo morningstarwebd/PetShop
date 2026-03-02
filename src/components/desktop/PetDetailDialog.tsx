@@ -61,13 +61,14 @@ export default function PetDetailDialog({ pet, onClose }: Props) {
                 </button>
 
                 {/* Image Gallery — Left */}
-                <div className="lg:w-3/5 relative bg-gray-100">
+                <div className="lg:w-3/5 relative bg-gray-100" style={{ minHeight: '100%' }}>
                     <img
                         src={petImages[pet.id] || 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&h=600&fit=crop'}
                         alt={pet.name}
-                        className="w-full h-64 lg:h-full object-cover"
+                        className="w-full h-64 lg:h-full object-cover object-center"
+                        style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
                     />
-                    <div className="absolute top-4 left-4 flex gap-2">
+                    <div className="absolute top-4 left-4 flex gap-2" style={{ zIndex: 1 }}>
                         <span className={`badge ${pet.availability === 'Available' ? 'badge-available' :
                             pet.availability === 'Coming Soon' ? 'badge-coming-soon' : 'badge-sold-out'
                             }`}>
@@ -77,33 +78,37 @@ export default function PetDetailDialog({ pet, onClose }: Props) {
                 </div>
 
                 {/* Details — Right (Sticky Sidebar on Desktop) */}
-                <div className="lg:w-2/5 overflow-y-auto p-8 lg:p-10 flex flex-col">
+                <div className="lg:w-2/5 overflow-y-auto p-8 lg:p-12 flex flex-col">
                     {/* Header */}
-                    <div className="mb-8">
-                        <div className="flex items-center gap-2 mb-2">
+                    <div style={{ marginBottom: '2rem' }}>
+                        <div className="flex items-center gap-2" style={{ marginBottom: '0.5rem', position: 'relative', left: '9px', top: '2px' }}>
                             <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">{pet.breed}</span>
                             <span className="text-sm text-muted">• {pet.category}</span>
                         </div>
-                        <h2 className="font-heading text-3xl font-bold text-charcoal mb-1">{pet.name}</h2>
-                        <p className="text-muted">{pet.gender} • {pet.age}</p>
+                        <h2 className="font-heading text-3xl font-bold text-charcoal mb-1"
+                            style={{ position: 'relative', left: '10px', top: '2px' }}>{pet.name}</h2>
+                        <p className="text-muted"
+                            style={{ position: 'relative', left: '10px', top: '4px' }}>{pet.gender} • {pet.age}</p>
                     </div>
 
                     {/* Price */}
-                    <div className="bg-gradient-to-r from-primary/5 to-accent/5 rounded-2xl p-6 mb-8">
-                        <span className="text-sm text-muted block mb-1">Price</span>
-                        <span className="font-heading text-3xl font-bold text-primary">₹{pet.price.toLocaleString()}</span>
-                        <span className="text-sm text-muted ml-2">Inclusive of all charges</span>
+                    <div className="bg-gradient-to-r from-primary/5 to-accent/5 rounded-2xl" style={{ padding: '1.5rem', marginBottom: '2.5rem', border: '1px solid rgba(85,183,155,0.15)', position: 'relative', left: '-11px', top: '-19px', transform: 'translate(19.2px, 0px)' }}>
+                        <span className="text-sm text-muted" style={{ display: 'block', marginBottom: '0.5rem' }}>Price</span>
+                        <div className="flex items-baseline" style={{ gap: '0.5rem' }}>
+                            <span className="font-heading text-3xl font-bold text-primary">₹{pet.price.toLocaleString()}</span>
+                            <span className="text-sm text-muted">Inclusive of all charges</span>
+                        </div>
                     </div>
 
                     {/* Description */}
-                    <div className="mb-8">
-                        <h3 className="font-heading text-lg font-semibold mb-3">About {pet.name}</h3>
+                    <div style={{ marginBottom: '2.5rem', position: 'relative', left: '12px', top: '-37px' }}>
+                        <h3 className="font-heading text-lg font-semibold" style={{ marginBottom: '1rem' }}>About {pet.name}</h3>
                         <p className="text-muted text-sm leading-relaxed">{pet.description}</p>
                     </div>
 
                     {/* Personality */}
-                    <div className="mb-8">
-                        <h3 className="font-heading text-lg font-semibold mb-3">Personality</h3>
+                    <div style={{ marginBottom: '2.5rem', position: 'relative', left: '12px', top: '-60px' }}>
+                        <h3 className="font-heading text-lg font-semibold" style={{ marginBottom: '0.75rem' }}>Personality</h3>
                         <div className="flex flex-wrap gap-2">
                             {pet.personality.map(trait => (
                                 <span key={trait} className="px-4 py-2 bg-cream rounded-full text-sm font-medium text-charcoal">
@@ -114,17 +119,18 @@ export default function PetDetailDialog({ pet, onClose }: Props) {
                     </div>
 
                     {/* Health */}
-                    <div className="mb-8">
-                        <h3 className="font-heading text-lg font-semibold mb-2">Health Details</h3>
-                        <div className="flex items-start gap-2 bg-green-50 rounded-xl p-4">
+                    <div style={{ marginBottom: '2.5rem', position: 'relative', left: '8px', top: '-79px' }}>
+                        <h3 className="font-heading text-lg font-semibold" style={{ marginBottom: '0.5rem' }}>Health Details</h3>
+                        <div className="flex items-start gap-2 bg-green-50 rounded-xl p-4"
+                            style={{ position: 'relative', left: '-2px' }}>
                             <span className="text-green-500 mt-0.5">✓</span>
                             <p className="text-sm text-green-800">{pet.healthDetails}</p>
                         </div>
                     </div>
 
                     {/* Delivery Options */}
-                    <div className="mb-8">
-                        <h3 className="font-heading text-lg font-semibold mb-3">Delivery Options</h3>
+                    <div style={{ marginBottom: '2.5rem' }}>
+                        <h3 className="font-heading text-lg font-semibold" style={{ marginBottom: '0.75rem', position: 'relative', left: '6px', top: '-98px' }}>Delivery Options</h3>
                         <div className="flex flex-col gap-2">
                             {pet.deliveryOptions.map(opt => (
                                 <label
@@ -133,6 +139,7 @@ export default function PetDetailDialog({ pet, onClose }: Props) {
                                         ? 'border-primary bg-primary/5'
                                         : 'border-gray-200 hover:border-primary/30'
                                         }`}
+                                    style={{ position: 'relative', left: '18px', top: '-98px' }}
                                 >
                                     <input
                                         type="radio"
@@ -158,6 +165,7 @@ export default function PetDetailDialog({ pet, onClose }: Props) {
                             onClick={() => { addToCart(pet); onClose(); }}
                             className="w-full btn-primary py-4 rounded-2xl text-base flex items-center justify-center gap-2"
                             disabled={pet.availability !== 'Available'}
+                            style={{ position: 'relative', left: '-1px', top: '-112px', transform: 'translate(18.4px, 0px)' }}
                         >
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                 <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" />
@@ -166,11 +174,13 @@ export default function PetDetailDialog({ pet, onClose }: Props) {
                             Add to Cart — ₹{pet.price.toLocaleString()}
                         </button>
 
-                        <div className="grid grid-cols-2 gap-3">
-                            <button onClick={handleBookVisit} className="btn-outline py-3.5 px-4 rounded-2xl text-sm text-center">
+                        <div className="grid grid-cols-2 gap-3" style={{ position: 'relative', left: '-1px', top: '1px' }}>
+                            <button onClick={handleBookVisit} className="btn-outline py-3.5 px-4 rounded-2xl text-sm text-center"
+                                style={{ position: 'relative', left: '15px', top: '-98px', height: '44px' }}>
                                 📅 Book Visit
                             </button>
-                            <a href="tel:+919876543210" className="btn-accent py-3.5 px-4 rounded-2xl text-sm text-center flex items-center justify-center gap-1">
+                            <a href="tel:+919876543210" className="btn-accent py-3.5 px-4 rounded-2xl text-sm text-center flex items-center justify-center gap-1"
+                                style={{ position: 'relative', left: '7px', top: '-105px', height: '43.2px', transform: 'translate(0px, 4.8px)' }}>
                                 📞 Call Now
                             </a>
                         </div>

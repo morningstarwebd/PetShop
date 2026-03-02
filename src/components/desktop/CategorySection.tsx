@@ -7,10 +7,10 @@ interface Props {
 }
 
 const categoryImages: Record<string, string> = {
-    dogs: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&h=400&fit=crop',
-    cats: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=600&h=400&fit=crop',
-    birds: 'https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=600&h=400&fit=crop',
-    exotic: 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=600&h=400&fit=crop',
+    dogs: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&h=1000&fit=crop',
+    cats: 'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?w=800&h=1000&fit=crop',
+    birds: 'https://images.unsplash.com/photo-1552728089-57bdde30beb3?w=800&h=1000&fit=crop',
+    exotic: 'https://images.unsplash.com/photo-1585110396000-c9ffd4e4b308?w=800&h=1000&fit=crop',
 };
 
 export default function CategorySection({ onSelectCategory }: Props) {
@@ -40,7 +40,7 @@ export default function CategorySection({ onSelectCategory }: Props) {
                     <h2 className="section-title">
                         Choose Your <span className="gradient-text">Companion</span>
                     </h2>
-                    <p className="section-subtitle mx-auto">
+                    <p className="section-subtitle mx-auto" style={{ position: 'relative', left: '-1px', top: '-12px' }}>
                         From loyal dogs to graceful cats, chirpy birds to unique exotics — find the perfect pet for your home.
                     </p>
                 </div>
@@ -50,7 +50,7 @@ export default function CategorySection({ onSelectCategory }: Props) {
                         <button
                             key={cat.id}
                             onClick={() => onSelectCategory(cat.slug)}
-                            className={`reveal delay-${(i + 1) * 100} group relative overflow-hidden rounded-[20px] aspect-[3/4] cursor-pointer border-0 p-0 text-left`}
+                            className={`reveal delay-${(i + 1) * 100} group relative overflow-hidden rounded-[20px] aspect-[4/5] cursor-pointer border-0 p-0 text-left`}
                             style={{ animationDelay: `${i * 100}ms` }}
                         >
                             {/* Image */}
@@ -65,15 +65,20 @@ export default function CategorySection({ onSelectCategory }: Props) {
                             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
 
                             {/* Content */}
-                            <div className="relative z-10 h-full flex flex-col justify-end p-7">
-                                <span className="text-4xl mb-3 transition-transform duration-300 group-hover:-translate-y-1">
+                            <div className="relative z-10 h-full flex flex-col justify-end p-8">
+                                <span className="text-4xl mb-3 transition-transform duration-300 group-hover:-translate-y-1"
+                                    style={{ position: 'relative', left: '8px', top: '0px' }}>
                                     {cat.icon}
                                 </span>
-                                <h3 className="text-white text-2xl font-heading font-bold mb-1">{cat.name}</h3>
-                                <p className="text-white/70 text-sm mb-4">{cat.description}</p>
-                                <div className="flex items-center gap-2 text-white/80 text-sm font-medium opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0">
-                                    <span>Explore</span>
-                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                                <h3 className="text-white text-2xl font-heading font-bold mb-1"
+                                    style={{ position: 'relative', left: '9px', top: '-3px' }}>{cat.name}</h3>
+                                <p className="text-white/70 text-sm mb-4"
+                                    style={{ position: 'relative', left: '8px', top: '-6px' }}>{cat.description}</p>
+                                <div className="flex items-center gap-2 text-white/80 text-sm font-medium opacity-0 translate-y-2 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full w-fit"
+                                    style={{ position: 'relative', left: '9px', top: '-3px' }}>
+                                    <span style={{ position: 'relative', left: '8px', top: '-1px' }}>Explore</span>
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"
+                                        style={{ width: '20.8px', height: '16px' }}>
                                         <path d="M5 12h14M12 5l7 7-7 7" />
                                     </svg>
                                 </div>

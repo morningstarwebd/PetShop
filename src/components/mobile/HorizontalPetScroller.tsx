@@ -64,11 +64,14 @@ export default function HorizontalPetScroller({ title, pets, onPetClick }: Props
                                 </span>
                             </div>
                         </div>
-                        <div className="p-3">
-                            <h4 className="font-heading font-bold text-sm text-charcoal truncate">{pet.name}</h4>
-                            <p className="text-[11px] text-muted truncate">{pet.breed} • {pet.age}</p>
+                        <div className="p-3.5">
+                            <h4 className="font-heading font-bold text-sm text-charcoal truncate"
+                                style={{ position: 'relative', left: '2px' }}>{pet.name}</h4>
+                            <p className="text-[11px] text-muted truncate"
+                                style={{ position: 'relative', left: '2px' }}>{pet.breed} • {pet.age}</p>
                             <div className="flex items-center justify-between mt-2">
-                                <span className="font-heading font-bold text-primary text-sm">₹{pet.price.toLocaleString()}</span>
+                                <span className="font-heading font-bold text-primary text-sm"
+                                    style={{ position: 'relative', left: '2px' }}>₹{pet.price.toLocaleString()}</span>
                                 <button
                                     onClick={e => { e.stopPropagation(); addToCart(pet); }}
                                     className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-colors"

@@ -108,7 +108,7 @@ export default function CheckoutDialog({ isOpen, onClose }: Props) {
             <div className="overlay" onClick={handleClose} />
             <div className="fixed inset-4 md:inset-8 lg:inset-y-8 lg:inset-x-[18%] z-50 bg-white rounded-[24px] shadow-2xl overflow-hidden animate-scale-in flex flex-col max-h-[92vh]">
                 {/* Header */}
-                <div className="flex items-center justify-between px-6 py-5 border-b border-gray-100">
+                <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100">
                     <div className="flex items-center gap-3">
                         <span className="text-2xl">{stepIcons[step]}</span>
                         <h2 className="font-heading text-xl font-bold text-charcoal">
@@ -146,9 +146,11 @@ export default function CheckoutDialog({ isOpen, onClose }: Props) {
                     {/* ===== Step: Review ===== */}
                     {step === 'review' && (
                         <div className="space-y-5">
-                            <h3 className="font-heading font-semibold text-sm text-muted uppercase tracking-wider">Items in Cart</h3>
+                            <h3 className="font-heading font-semibold text-sm text-muted uppercase tracking-wider"
+                                style={{ position: 'relative', left: '3px' }}>Items in Cart</h3>
                             {items.map(item => (
-                                <div key={item.pet.id} className="flex items-center gap-4 p-5 bg-cream rounded-2xl">
+                                <div key={item.pet.id} className="flex items-center gap-4 p-5 bg-cream rounded-2xl"
+                                    style={{ height: '68px' }}>
                                     <div className="w-14 h-14 rounded-xl bg-white flex items-center justify-center text-2xl shadow-sm">
                                         {item.pet.category === 'dogs' ? '🐕' : item.pet.category === 'cats' ? '🐱' : item.pet.category === 'birds' ? '🐦' : '🦎'}
                                     </div>
@@ -156,16 +158,23 @@ export default function CheckoutDialog({ isOpen, onClose }: Props) {
                                         <p className="font-heading font-semibold text-sm truncate">{item.pet.name} ({item.pet.breed})</p>
                                         <p className="text-xs text-muted mt-0.5">Qty: {item.quantity} • {item.deliveryMethod}</p>
                                     </div>
-                                    <p className="font-heading font-bold text-primary whitespace-nowrap">₹{(item.pet.price * item.quantity).toLocaleString()}</p>
+                                    <p className="font-heading font-bold text-primary whitespace-nowrap"
+                                        style={{ position: 'relative', left: '-17px', top: '-3px' }}>₹{(item.pet.price * item.quantity).toLocaleString()}</p>
                                 </div>
                             ))}
 
                             <div className="space-y-2 bg-cream rounded-2xl p-6 mt-4">
-                                <div className="flex justify-between text-sm"><span className="text-muted">Subtotal</span><span>₹{subtotal.toLocaleString()}</span></div>
-                                <div className="flex justify-between text-sm"><span className="text-muted">Delivery</span><span>{deliveryCharge > 0 ? `₹${deliveryCharge}` : 'Free'}</span></div>
-                                <div className="flex justify-between text-base font-bold border-t border-gray-200 pt-3 mt-2">
-                                    <span>Total</span>
-                                    <span className="text-primary text-lg">₹{total.toLocaleString()}</span>
+                                <div className="flex justify-between text-sm">
+                                    <span className="text-muted" style={{ transform: 'translate(5.36px, 0px)' }}>Subtotal</span>
+                                    <span style={{ position: 'relative', left: '-21px', top: '-3px' }}>₹{subtotal.toLocaleString()}</span>
+                                </div>
+                                <div className="flex justify-between text-sm" style={{ transform: 'translate(5.12px, 0px)' }}>
+                                    <span className="text-muted">Delivery</span>
+                                    <span style={{ position: 'relative', left: '-33px' }}>{deliveryCharge > 0 ? `₹${deliveryCharge}` : 'Free'}</span>
+                                </div>
+                                <div className="flex justify-between text-base font-bold border-t border-gray-200 pt-3 mt-2" style={{ transform: 'translate(15.2px, 0px)' }}>
+                                    <span style={{ position: 'relative', left: '-8px', top: '1px' }}>Total</span>
+                                    <span className="text-primary text-lg" style={{ position: 'relative', left: '-6px', top: '-2px' }}>₹{total.toLocaleString()}</span>
                                 </div>
                             </div>
                         </div>
@@ -175,7 +184,8 @@ export default function CheckoutDialog({ isOpen, onClose }: Props) {
                     {step === 'address' && (
                         <div className="animate-fade-in">
                             <p className="text-sm text-muted mb-6">Please fill in your delivery details. All fields marked with <span className="text-red-500">*</span> are required.</p>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-5">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-5"
+                                style={{ transform: 'translate(4.8px, 0px)' }}>
                                 {/* First Name */}
                                 <div>
                                     <label className="block text-sm font-semibold text-charcoal mb-1.5">First Name <span className="text-red-500">*</span></label>

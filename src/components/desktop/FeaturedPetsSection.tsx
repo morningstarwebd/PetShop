@@ -53,7 +53,7 @@ export default function FeaturedPetsSection({ onPetClick }: Props) {
                     <h2 className="section-title">
                         Featured <span className="gradient-text">Pets</span>
                     </h2>
-                    <p className="section-subtitle mx-auto">
+                    <p className="section-subtitle mx-auto" style={{ position: 'relative', left: '-1px', top: '-16px' }}>
                         Our most loved companions, handpicked for your family
                     </p>
                 </div>
@@ -89,18 +89,22 @@ export default function FeaturedPetsSection({ onPetClick }: Props) {
                             </div>
 
                             {/* Content */}
-                            <div className="p-6">
+                            <div className="p-7">
                                 <div className="flex items-start justify-between mb-2">
                                     <div>
-                                        <h3 className="font-heading text-xl font-bold text-charcoal">{pet.name}</h3>
-                                        <p className="text-muted text-sm">{pet.breed} • {pet.age}</p>
+                                        <h3 className="font-heading text-xl font-bold text-charcoal"
+                                            style={{ position: 'relative', left: '4px', top: '-1px' }}>{pet.name}</h3>
+                                        <p className="text-muted text-sm"
+                                            style={{ position: 'relative', left: '4px', top: '1px' }}>{pet.breed} • {pet.age}</p>
                                     </div>
-                                    <span className="font-heading text-xl font-bold text-primary">
+                                    <span className="font-heading text-xl font-bold text-primary"
+                                        style={{ position: 'relative', left: '-5px', top: '1px' }}>
                                         ₹{pet.price.toLocaleString()}
                                     </span>
                                 </div>
 
-                                <div className="flex flex-wrap gap-1.5 mb-4">
+                                <div className="flex flex-wrap gap-1.5 mb-4"
+                                    style={{ position: 'relative', left: '5px', top: '-1px' }}>
                                     {pet.personality.slice(0, 3).map(trait => (
                                         <span key={trait} className="text-xs bg-cream px-2.5 py-1 rounded-full text-muted font-medium">
                                             {trait}
@@ -108,7 +112,8 @@ export default function FeaturedPetsSection({ onPetClick }: Props) {
                                     ))}
                                 </div>
 
-                                <div className="flex items-center gap-2 mb-4">
+                                <div className="flex items-center gap-2 mb-4"
+                                    style={{ position: 'relative', left: '6px', top: '-2px' }}>
                                     <span className={`w-2 h-2 rounded-full ${pet.vaccination === 'Fully Vaccinated' ? 'bg-green-400' : 'bg-amber-400'
                                         }`} />
                                     <span className="text-xs text-muted">{pet.vaccination}</span>
@@ -118,6 +123,7 @@ export default function FeaturedPetsSection({ onPetClick }: Props) {
                                     onClick={(e) => { e.stopPropagation(); addToCart(pet); }}
                                     className="w-full btn-primary rounded-xl py-3 text-center flex items-center justify-center gap-2"
                                     disabled={pet.availability !== 'Available'}
+                                    style={{ height: '46.5px', transform: 'translate(0px, 4px)' }}
                                 >
                                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                                         <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" />
