@@ -95,15 +95,6 @@ export default function Home() {
 
         <Footer />
         <CartSheet />
-        {selectedPet && (
-          <PetDetailDialog pet={selectedPet} onClose={() => setSelectedPet(null)} />
-        )}
-        <CheckoutDialog isOpen={isCheckoutOpen} onClose={() => setIsCheckoutOpen(false)} />
-        <button
-          id="checkout-trigger"
-          className="hidden"
-          onClick={() => setIsCheckoutOpen(true)}
-        />
       </div>
 
       {/* ==================== MOBILE ==================== */}
@@ -224,16 +215,18 @@ export default function Home() {
         <MobileBottomNav onNavigate={handleMobileNavigate} />
         <MobileCartFab />
         <CartSheet />
-        {selectedPet && (
-          <PetDetailDialog pet={selectedPet} onClose={() => setSelectedPet(null)} />
-        )}
-        <CheckoutDialog isOpen={isCheckoutOpen} onClose={() => setIsCheckoutOpen(false)} />
-        <button
-          id="checkout-trigger"
-          className="hidden"
-          onClick={() => setIsCheckoutOpen(true)}
-        />
       </div>
+
+      {/* ==================== GLOBAL DIALOGS ==================== */}
+      {selectedPet && (
+        <PetDetailDialog pet={selectedPet} onClose={() => setSelectedPet(null)} />
+      )}
+      <CheckoutDialog isOpen={isCheckoutOpen} onClose={() => setIsCheckoutOpen(false)} />
+      <button
+        id="checkout-trigger"
+        className="hidden"
+        onClick={() => setIsCheckoutOpen(true)}
+      />
     </>
   );
 }

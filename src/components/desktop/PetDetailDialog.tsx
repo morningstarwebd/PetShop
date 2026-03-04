@@ -44,143 +44,149 @@ export default function PetDetailDialog({ pet, onClose }: Props) {
 
     return (
         <>
-            {/* Overlay */}
-            <div className="overlay" onClick={onClose} />
+            {/* Dialog Wrapper for stable centering */}
+            <div className="fixed inset-0 z-50 grid place-items-center p-4 pointer-events-none">
+                <div className="overlay pointer-events-auto" onClick={onClose} />
 
-            {/* Dialog */}
-            <div className="fixed inset-4 md:inset-10 lg:inset-y-10 lg:inset-x-[12%] z-50 bg-white rounded-[24px] shadow-2xl overflow-hidden animate-scale-in flex flex-col lg:flex-row max-h-[92vh]">
-                {/* Close */}
-                <button
-                    onClick={onClose}
-                    className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white/90 backdrop-blur-sm shadow-md flex items-center justify-center hover:bg-white transition-colors"
-                    aria-label="Close"
-                >
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E2E2E" strokeWidth="2">
-                        <path d="M18 6L6 18M6 6l12 12" />
-                    </svg>
-                </button>
+                {/* Dialog Content Container — Rigid height and direct flex layout for maximum stability */}
+                <div className="relative z-50 w-full max-w-[95vw] lg:max-w-[76vw] h-[90vh] bg-white rounded-[24px] shadow-2xl overflow-hidden pointer-events-auto animate-scale-in flex flex-col lg:flex-row">
+                    {/* Close */}
+                    <button
+                        onClick={onClose}
+                        className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center hover:bg-white transition-colors"
+                        aria-label="Close"
+                    >
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2E2E2E" strokeWidth="2">
+                            <path d="M18 6L6 18M6 6l12 12" />
+                        </svg>
+                    </button>
 
-                {/* Image Gallery — Left */}
-                <div className="lg:w-3/5 h-64 lg:h-auto relative bg-gray-100 self-stretch">
-                    <img
-                        src={petImages[pet.id] || 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&h=600&fit=crop'}
-                        alt={pet.name}
-                        className="object-cover object-center"
-                        style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', maxWidth: 'none' }}
-                    />
-                    <div className="absolute top-4 left-4 flex gap-2" style={{ zIndex: 1 }}>
-                        <span className={`badge ${pet.availability === 'Available' ? 'badge-available' :
-                            pet.availability === 'Coming Soon' ? 'badge-coming-soon' : 'badge-sold-out'
-                            }`}>
-                            {pet.availability}
-                        </span>
-                    </div>
-                </div>
-
-                {/* Details — Right (Sticky Sidebar on Desktop) */}
-                <div className="lg:w-2/5 overflow-y-auto overflow-x-hidden p-8 lg:p-12 flex flex-col">
-                    {/* Header */}
-                    <div style={{ marginBottom: '2rem' }}>
-                        <div className="flex items-center gap-2" style={{ marginBottom: '0.5rem' }}>
-                            <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">{pet.breed}</span>
-                            <span className="text-sm text-muted">• {pet.category}</span>
-                        </div>
-                        <h2 className="font-heading text-3xl font-bold text-charcoal mb-1">{pet.name}</h2>
-                        <p className="text-muted">{pet.gender} • {pet.age}</p>
-                    </div>
-
-                    {/* Price */}
-                    <div className="bg-gradient-to-r from-primary/5 to-accent/5 rounded-2xl" style={{ padding: '1.5rem', marginBottom: '2.5rem', border: '1px solid rgba(85,183,155,0.15)' }}>
-                        <span className="text-sm text-muted" style={{ display: 'block', marginBottom: '0.5rem' }}>Price</span>
-                        <div className="flex items-baseline" style={{ gap: '0.5rem' }}>
-                            <span className="font-heading text-3xl font-bold text-primary">₹{pet.price.toLocaleString()}</span>
-                            <span className="text-sm text-muted">Inclusive of all charges</span>
+                    {/* Image Gallery — Left */}
+                    <div className="relative bg-white overflow-hidden h-[256px] lg:h-full lg:w-3/5 flex-shrink-0">
+                        <img
+                            src={petImages[pet.id] || 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=800&h=600&fit=crop'}
+                            alt={pet.name}
+                            className="object-cover object-center"
+                            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', maxWidth: 'none' }}
+                        />
+                        <div className="absolute top-4 left-4 flex gap-2" style={{ zIndex: 1 }}>
+                            <span className={`badge ${pet.availability === 'Available' ? 'badge-available' :
+                                pet.availability === 'Coming Soon' ? 'badge-coming-soon' : 'badge-sold-out'
+                                }`}>
+                                {pet.availability}
+                            </span>
                         </div>
                     </div>
 
-                    {/* Description */}
-                    <div style={{ marginBottom: '2.5rem' }}>
-                        <h3 className="font-heading text-lg font-semibold" style={{ marginBottom: '1rem' }}>About {pet.name}</h3>
-                        <p className="text-muted text-sm leading-relaxed">{pet.description}</p>
-                    </div>
+                    {/* Details — Right */}
+                    <div className="relative flex-1 min-h-0 flex flex-col bg-white lg:w-2/5">
+                        {/* Scrollable Content Area */}
+                        <div className="flex-1 min-h-0 overflow-y-auto overflow-x-hidden p-8 lg:p-12" style={{ scrollbarGutter: 'stable' }}>
+                            {/* Header */}
+                            <div style={{ marginBottom: '2rem' }}>
+                                <div className="flex items-center gap-2" style={{ marginBottom: '0.5rem' }}>
+                                    <span className="text-sm font-medium text-primary bg-primary/10 px-3 py-1 rounded-full">{pet.breed}</span>
+                                    <span className="text-sm text-muted">• {pet.category}</span>
+                                </div>
+                                <h2 className="font-heading text-3xl font-bold text-charcoal mb-1">{pet.name}</h2>
+                                <p className="text-muted">{pet.gender} • {pet.age}</p>
+                            </div>
 
-                    {/* Personality */}
-                    <div style={{ marginBottom: '2.5rem' }}>
-                        <h3 className="font-heading text-lg font-semibold" style={{ marginBottom: '0.75rem' }}>Personality</h3>
-                        <div className="flex flex-wrap gap-2">
-                            {pet.personality.map(trait => (
-                                <span key={trait} className="px-4 py-2 bg-cream rounded-full text-sm font-medium text-charcoal">
-                                    {trait}
-                                </span>
-                            ))}
+                            {/* Price */}
+                            <div className="bg-gradient-to-r from-primary/5 to-accent/5 rounded-2xl" style={{ padding: '1.5rem', marginBottom: '2.5rem', border: '1px solid rgba(85,183,155,0.15)' }}>
+                                <span className="text-sm text-muted" style={{ display: 'block', marginBottom: '0.5rem' }}>Price</span>
+                                <div className="flex items-baseline" style={{ gap: '0.5rem' }}>
+                                    <span className="font-heading text-3xl font-bold text-primary">₹{pet.price.toLocaleString()}</span>
+                                    <span className="text-sm text-muted">Inclusive of all charges</span>
+                                </div>
+                            </div>
+
+                            {/* Description */}
+                            <div style={{ marginBottom: '2.5rem' }}>
+                                <h3 className="font-heading text-lg font-semibold" style={{ marginBottom: '1rem' }}>About {pet.name}</h3>
+                                <p className="text-muted text-sm leading-relaxed">{pet.description}</p>
+                            </div>
+
+                            {/* Personality */}
+                            <div style={{ marginBottom: '2.5rem' }}>
+                                <h3 className="font-heading text-lg font-semibold" style={{ marginBottom: '0.75rem' }}>Personality</h3>
+                                <div className="flex flex-wrap gap-2">
+                                    {pet.personality.map(trait => (
+                                        <span key={trait} className="px-4 py-2 bg-cream rounded-full text-sm font-medium text-charcoal">
+                                            {trait}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Health */}
+                            <div style={{ marginBottom: '2.5rem' }}>
+                                <h3 className="font-heading text-lg font-semibold" style={{ marginBottom: '0.5rem' }}>Health Details</h3>
+                                <div className="flex items-start gap-2 bg-green-50 rounded-xl p-4">
+                                    <span className="text-green-500 mt-0.5">✓</span>
+                                    <p className="text-sm text-green-800">{pet.healthDetails}</p>
+                                </div>
+                            </div>
+
+                            {/* Delivery Options */}
+                            <div style={{ marginBottom: '2.5rem' }}>
+                                <h3 className="font-heading text-lg font-semibold" style={{ marginBottom: '0.75rem' }}>Delivery Options</h3>
+                                <div className="flex flex-col gap-2">
+                                    {pet.deliveryOptions.map(opt => (
+                                        <label
+                                            key={opt}
+                                            className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-colors ${selectedDelivery === opt
+                                                ? 'border-primary bg-primary/5'
+                                                : 'border-gray-200 hover:border-primary/30'
+                                                }`}
+                                        >
+
+                                            <input
+                                                type="radio"
+                                                name="delivery"
+                                                value={opt}
+                                                checked={selectedDelivery === opt}
+                                                onChange={() => setSelectedDelivery(opt)}
+                                                className="sr-only"
+                                            />
+                                            <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedDelivery === opt ? 'border-primary' : 'border-gray-300'
+                                                }`}>
+                                                {selectedDelivery === opt && <div className="w-2.5 h-2.5 rounded-full bg-primary" />}
+                                            </div>
+                                            <span className="text-sm font-medium">{opt}</span>
+                                        </label>
+                                    ))}
+                                </div>
+                            </div>
+
                         </div>
-                    </div>
 
-                    {/* Health */}
-                    <div style={{ marginBottom: '2.5rem' }}>
-                        <h3 className="font-heading text-lg font-semibold" style={{ marginBottom: '0.5rem' }}>Health Details</h3>
-                        <div className="flex items-start gap-2 bg-green-50 rounded-xl p-4">
-                            <span className="text-green-500 mt-0.5">✓</span>
-                            <p className="text-sm text-green-800">{pet.healthDetails}</p>
-                        </div>
-                    </div>
-
-                    {/* Delivery Options */}
-                    <div style={{ marginBottom: '2.5rem' }}>
-                        <h3 className="font-heading text-lg font-semibold" style={{ marginBottom: '0.75rem' }}>Delivery Options</h3>
-                        <div className="flex flex-col gap-2">
-                            {pet.deliveryOptions.map(opt => (
-                                <label
-                                    key={opt}
-                                    className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-all ${selectedDelivery === opt
-                                        ? 'border-primary bg-primary/5'
-                                        : 'border-gray-200 hover:border-primary/30'
-                                        }`}
-                                >
-
-                                    <input
-                                        type="radio"
-                                        name="delivery"
-                                        value={opt}
-                                        checked={selectedDelivery === opt}
-                                        onChange={() => setSelectedDelivery(opt)}
-                                        className="sr-only"
-                                    />
-                                    <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedDelivery === opt ? 'border-primary' : 'border-gray-300'
-                                        }`}>
-                                        {selectedDelivery === opt && <div className="w-2.5 h-2.5 rounded-full bg-primary" />}
-                                    </div>
-                                    <span className="text-sm font-medium">{opt}</span>
-                                </label>
-                            ))}
-                        </div>
-                    </div>
-
-                    {/* CTA Buttons — Sticky bottom */}
-                    <div className="mt-auto pt-8 border-t border-gray-100 space-y-3">
-                        <button
-                            onClick={() => { addToCart(pet); onClose(); }}
-                            className="w-full btn-primary py-4 rounded-2xl text-base flex items-center justify-center gap-2"
-                            disabled={pet.availability !== 'Available'}
-                        >
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" />
-                                <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
-                            </svg>
-                            Add to Cart — ₹{pet.price.toLocaleString()}
-                        </button>
-
-                        <div className="grid grid-cols-2 gap-3">
-                            <button onClick={handleBookVisit} className="btn-outline py-3.5 px-4 rounded-2xl text-sm text-center">
-                                📅 Book Visit
+                        {/* CTA Buttons — Flex Anchored at bottom */}
+                        <div className="flex-shrink-0 p-8 lg:px-12 lg:py-8 border-t border-gray-100 space-y-3 bg-white z-20">
+                            <button
+                                onClick={() => { addToCart(pet); onClose(); }}
+                                className="w-full btn-primary py-4 rounded-2xl text-base flex items-center justify-center gap-2"
+                                disabled={pet.availability !== 'Available'}
+                            >
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                    <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" />
+                                    <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
+                                </svg>
+                                Add to Cart — ₹{pet.price.toLocaleString()}
                             </button>
-                            <a href="tel:+919876543210" className="btn-accent py-3.5 px-4 rounded-2xl text-sm text-center flex items-center justify-center gap-1">
-                                📞 Call Now
-                            </a>
+
+                            <div className="grid grid-cols-2 gap-3">
+                                <button onClick={handleBookVisit} className="btn-outline py-3.5 px-4 rounded-2xl text-sm text-center">
+                                    📅 Book Visit
+                                </button>
+                                <a href="tel:+919876543210" className="btn-accent py-3.5 px-4 rounded-2xl text-sm text-center flex items-center justify-center gap-1">
+                                    📞 Call Now
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div >
+            </div>
         </>
     );
 }
