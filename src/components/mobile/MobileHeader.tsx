@@ -8,13 +8,13 @@ export default function MobileHeader() {
     const [searchQuery, setSearchQuery] = useState('');
 
     return (
-        <header className="lg:hidden fixed top-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-b border-gray-50 shadow-sm">
+        <header className="lg:hidden fixed top-0 left-0 right-0 z-40" style={{ background: 'rgba(0,0,0,0.28)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }}>
             <div className="flex items-center justify-between px-4 h-14">
                 {/* Logo */}
                 <a href="#hero" className="flex items-center gap-1.5">
                     <span className="text-xl">🐾</span>
-                    <span className="font-heading text-lg font-bold text-charcoal">
-                        Happy<span className="text-primary">Pets</span>
+                    <span className="font-heading text-lg font-bold text-white">
+                        Happy<span className="text-primary-light">Pets</span>
                     </span>
                 </a>
 
@@ -22,19 +22,21 @@ export default function MobileHeader() {
                 <div className="flex items-center gap-2">
                     <button
                         onClick={() => setSearchOpen(!searchOpen)}
-                        className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center"
+                        className="w-9 h-9 rounded-full flex items-center justify-center"
+                        style={{ background: 'rgba(255,255,255,0.18)' }}
                         aria-label="Search"
                     >
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6B7280" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
                         </svg>
                     </button>
                     <button
                         onClick={() => setIsCartOpen(true)}
-                        className="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center relative"
+                        className="w-9 h-9 rounded-full flex items-center justify-center relative"
+                        style={{ background: 'rgba(255,255,255,0.18)' }}
                         aria-label="Cart"
                     >
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5FBDB3" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" />
                             <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
                         </svg>

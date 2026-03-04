@@ -133,28 +133,25 @@ export default function PetDetailDialog({ pet, onClose }: Props) {
                                 <h3 className="font-heading text-lg font-semibold" style={{ marginBottom: '0.75rem' }}>Delivery Options</h3>
                                 <div className="flex flex-col gap-2">
                                     {pet.deliveryOptions.map(opt => (
-                                        <label
+                                        <div
                                             key={opt}
+                                            role="radio"
+                                            aria-checked={selectedDelivery === opt}
+                                            tabIndex={0}
+                                            onClick={() => setSelectedDelivery(opt)}
+                                            onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && setSelectedDelivery(opt)}
                                             className={`flex items-center gap-3 p-4 rounded-xl border-2 cursor-pointer transition-colors ${selectedDelivery === opt
                                                 ? 'border-primary bg-primary/5'
                                                 : 'border-gray-200 hover:border-primary/30'
                                                 }`}
+                                            style={{ userSelect: 'none' }}
                                         >
-
-                                            <input
-                                                type="radio"
-                                                name="delivery"
-                                                value={opt}
-                                                checked={selectedDelivery === opt}
-                                                onChange={() => setSelectedDelivery(opt)}
-                                                className="sr-only"
-                                            />
-                                            <div className={`w-5 h-5 rounded-full border-2 flex items-center justify-center ${selectedDelivery === opt ? 'border-primary' : 'border-gray-300'
-                                                }`}>
+                                            <div className={`w-5 h-5 rounded-full border-2 flex-shrink-0 flex items-center justify-center ${selectedDelivery === opt ? 'border-primary' : 'border-gray-300'
+                                                }`} style={{ minWidth: 20 }}>
                                                 {selectedDelivery === opt && <div className="w-2.5 h-2.5 rounded-full bg-primary" />}
                                             </div>
                                             <span className="text-sm font-medium">{opt}</span>
-                                        </label>
+                                        </div>
                                     ))}
                                 </div>
                             </div>
@@ -162,13 +159,13 @@ export default function PetDetailDialog({ pet, onClose }: Props) {
                         </div>
 
                         {/* CTA Buttons — Flex Anchored at bottom */}
-                        <div className="flex-shrink-0 p-8 lg:px-12 lg:py-8 border-t border-gray-100 space-y-3 bg-white z-20">
+                        <div className="flex-shrink-0 p-8 lg:px-12 lg:py-8 border-t border-gray-100 bg-white z-20" style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
                             <button
                                 onClick={() => { addToCart(pet); onClose(); }}
                                 className="w-full btn-primary py-4 rounded-2xl text-base flex items-center justify-center gap-2"
                                 disabled={pet.availability !== 'Available'}
                             >
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ width: 20, height: 20, minWidth: 20, flexShrink: 0 }}>
                                     <circle cx="9" cy="21" r="1" /><circle cx="20" cy="21" r="1" />
                                     <path d="M1 1h4l2.68 13.39a2 2 0 002 1.61h9.72a2 2 0 002-1.61L23 6H6" />
                                 </svg>

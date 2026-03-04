@@ -174,7 +174,7 @@ export default function Home() {
 
         {/* Mobile trust section */}
         <div className="px-5 py-8">
-          <h3 className="font-heading font-bold text-charcoal text-lg mb-4 text-center">Why Happy Pets?</h3>
+          <h3 className="font-heading font-extrabold text-charcoal text-xl mb-4 text-center">Why Happy Pets?</h3>
           <div className="grid grid-cols-2 gap-4">
             {[
               { icon: '🏥', title: 'Vet Certified' },
